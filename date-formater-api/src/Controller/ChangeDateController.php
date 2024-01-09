@@ -25,26 +25,28 @@ class ChangeDateController extends AbstractController
 
     private function convertArabToRoman($date)
     {
-        $romanNumerals = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X');
-        $months = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
-
         list($day, $month, $year) = explode('/', $date);
-
-        $romanDay = $romanNumerals[intval($day)];
-        $romanYear = '';
-        $thousands = intval($year / 1000);
-        $hundreds = ($year % 1000) / 100;
-        $tens = ($year % 100) / 10;
-        $units = $year % 10;
-
-        $romanYear .= str_repeat('M', $thousands);
-        $romanYear .= ($hundreds == 9) ? 'CM' : (($hundreds == 4) ? 'CD' : str_repeat('D', intval($hundreds / 5)) . str_repeat('C', $hundreds % 5));
-        $romanYear .= ($tens == 9) ? 'XC' : (($tens == 4) ? 'XL' : str_repeat('L', intval($tens / 5)) . str_repeat('X', $tens % 5));
-        $romanYear .= ($units == 9) ? 'IX' : (($units == 4) ? 'IV' : str_repeat('V', intval($units / 5)) . str_repeat('I', $units % 5));
-
-        $romanDate = "$romanDay - {$months[intval($month)]} - $romanYear";
-
+        $romanDay = $this->intToRoman($day);
+        $romanMonth = $this->intToRoman($month);
+        $romanYear = $this->intToRoman($year);
+        $romanDate = "$romanDay - $romanMonth - $romanYear";
         return $romanDate;
+    }
+
+    private function intToRoman($num)
+    {
+        $result = '';
+
+        $romanNumerals = array('M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I');
+        $values = array(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1);
+
+        for ($i = 0; $i < count($values); $i++) {
+            while ($num >= $values[$i]) {
+                $result .= $romanNumerals[$i];
+                $num -= $values[$i];
+            }
+        }
+        return $result;
     }
 }
 
