@@ -1,27 +1,33 @@
-# DateFormaterWebcli
+# Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
+This project is an Angular application that can be easily containerized using Docker.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before you begin, ensure you have the following installed:
 
-## Code scaffolding
+- [Docker](https://www.docker.com/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Building and Running with Docker
 
-## Build
+### Build Docker Image
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To build a Docker image for the Angular app, run the following command in the project directory:
 
-## Running unit tests
+```bash
+docker build -t date-formater-webcli .
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Run Docker Container
 
-## Running end-to-end tests
+Once the Docker image is built, you can run a Docker container with the following command:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+docker run -p 4200:4200 date-formater-webcli
+```
 
-## Further help
+This command maps port 4200 on your host machine to port 4200 inside the Docker container.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Access the App
+
+Open your web browser and navigate to [http://localhost:4200/](http://localhost:4200/) to access the Angular app running inside the Docker container.

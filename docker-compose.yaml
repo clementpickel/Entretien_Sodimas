@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  symfony-api:
+    build:
+      context: ./date-formater-api
+    ports:
+      - "8000:80"
+    networks:
+      - app-network
+
+  angular-app:
+    build:
+      context: ./date-formater-webcli
+    ports:
+      - "4200:4200"
+    networks:
+      - app-network
+    depends_on:
+      - symfony-api
+
+networks:
+  app-network:
+    driver: bridge
