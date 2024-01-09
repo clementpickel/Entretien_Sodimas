@@ -1,6 +1,6 @@
 # Angular App
 
-This project is an Angular application that can be easily containerized using Docker.
+Angular App to convert Arabic date to Roman date for Sodimas.
 
 ## Prerequisites
 

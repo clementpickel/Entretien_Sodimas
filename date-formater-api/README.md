@@ -10,13 +10,6 @@ Make sure you have Docker installed on your machine.
 
 ## Getting Started
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/clementpickel/Entretien_Sodimas
-cd date-formater-api
-```
-
 Build the Docker image:
 ```bash
 docker build -t date-formater-api .
