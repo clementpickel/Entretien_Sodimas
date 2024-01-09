@@ -14,6 +14,14 @@ class ChangeDateController extends AbstractController
     {
         $date = $request->query->get('date');
 
+        if (!$this->isValidInput($date)) {
+            // Return a JSON response with a 400 Bad Request status code
+            return $this->json([
+                'error' => 'Invalid input date format.',
+                'converted_date' => "Invalid input date",
+            ], JsonResponse::HTTP_BAD_REQUEST);
+        }
+
         $convertedDate = $this->convertArabToRoman($date);
 
         return $this->json([
@@ -21,6 +29,23 @@ class ChangeDateController extends AbstractController
             'input_date' => $date,
             'converted_date' => $convertedDate,
         ]);
+    }
+
+    private function isValidInput($date)
+    {
+        if (!preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $date)) {
+            return false;
+        }
+    
+        list($day, $month, $year) = explode('/', $date);
+    
+        if (!ctype_digit($day) || !ctype_digit($month) || !ctype_digit($year)) {
+            return false;
+        }
+        if ($day > 31 or $day < 0 or $month > 12 or $month < 0 or $year <= 0) {
+            return false;
+        }
+        return true;
     }
 
     private function convertArabToRoman($date)
@@ -49,4 +74,3 @@ class ChangeDateController extends AbstractController
         return $result;
     }
 }
-

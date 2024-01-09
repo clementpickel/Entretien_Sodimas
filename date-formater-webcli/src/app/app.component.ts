@@ -23,6 +23,7 @@ export class AppComponent {
         this.result = response.converted_date;
       },
       (error) => {
+        this.result = "An error occured, try another date";
         console.error('Error:', error);
       }
     );
