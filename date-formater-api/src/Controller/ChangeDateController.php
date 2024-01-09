@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class ChangeDateController extends AbstractController
 {
     #[Route('/api/date-formater/arab-to-roman', name: 'arab_to_roman', methods: ['GET'])]
@@ -15,10 +16,8 @@ class ChangeDateController extends AbstractController
         $date = $request->query->get('date');
 
         if (!$this->isValidInput($date)) {
-            // Return a JSON response with a 400 Bad Request status code
             return $this->json([
                 'error' => 'Invalid input date format.',
-                'converted_date' => "Invalid input date",
             ], JsonResponse::HTTP_BAD_REQUEST);
         }
 
@@ -33,7 +32,7 @@ class ChangeDateController extends AbstractController
 
     private function isValidInput($date)
     {
-        if (!preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $date)) {
+        if (!preg_match('/^\d{2}\/\d{2}\/\d{1,4}$/', $date)) {
             return false;
         }
     
