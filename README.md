@@ -42,15 +42,3 @@ Make sure you have Docker and Docker Compose installed on your system.
     ```bash
     docker-compose down
     ```
-
-## Notes
-
-- The Symfony API runs on port 8000.
-- The Angular App runs on port 4200.
-- The `-d` option in `docker-compose up -d` detaches the services from the terminal.
-
-Peut etre que vous devriez mettre a jour l'énoncé pour utiliser 
-
-    ```bash
-    ng new date-formater-webcli no-standalone
-    ```

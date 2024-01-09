@@ -23,7 +23,7 @@ docker build -t date-formater-api .
 ```
 Run the Docker container:
 ```bash
-docker run -p 8080:80 date-formater-api
+docker run -p 8000:80 date-formater-api
 ```
 Access the Symfony application in your web browser:
-http://localhost:8080
+http://localhost:8000
