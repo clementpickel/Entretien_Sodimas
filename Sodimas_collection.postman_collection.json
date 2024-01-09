@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "be1ed495-fd6d-4a9d-8ecb-525f1cd57990",
+		"name": "Sodimas_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20964824"
+	},
+	"item": [
+		{
+			"name": "Basic",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(pm.response.json().message).to.equal(\"Arab to Roman conversion successful.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify input date\", function () {\r",
+							"    pm.expect(pm.response.json().input_date).to.equal(\"25/12/1998\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify converted date\", function () {\r",
+							"    pm.expect(pm.response.json().converted_date).to.equal(\"XXV - XII - MCMXCVIII\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/date-formater/arab-to-roman?date=25%2F12%2F1998",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"date-formater",
+						"arab-to-roman"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "25%2F12%2F1998"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Basic/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(pm.response.json().message).to.equal(\"Arab to Roman conversion successful.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify input date\", function () {\r",
+							"    pm.expect(pm.response.json().input_date).to.equal(\"15/11/2003\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify converted date\", function () {\r",
+							"    pm.expect(pm.response.json().converted_date).to.equal(\"XV - XI - MMIII\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/date-formater/arab-to-roman?date=15/11/2003",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"date-formater",
+						"arab-to-roman"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "15/11/2003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/date-formater/arab-to-roman?date=0/11/2003",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"date-formater",
+						"arab-to-roman"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "0/11/2003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/date-formater/arab-to-roman?date=15/0/2003",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"date-formater",
+						"arab-to-roman"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "15/0/2003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/date-formater/arab-to-roman?date=15/11/0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"date-formater",
+						"arab-to-roman"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "15/11/0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Error_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/date-formater/arab-to-roman?date=15/11/-200",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"date-formater",
+						"arab-to-roman"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "15/11/-200"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
