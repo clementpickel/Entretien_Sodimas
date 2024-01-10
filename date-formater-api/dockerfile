@@ -35,6 +35,8 @@ COPY . .
 # Generate the Symfony autoloader
 RUN composer dump-autoload --no-scripts --optimize
 
+# Create the Symfony var directory
+RUN mkdir -p var
 # Set proper permissions for the Symfony var directory
 RUN chown -R www-data:www-data var
 
